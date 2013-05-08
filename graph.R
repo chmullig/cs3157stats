@@ -12,19 +12,19 @@ commits$d <- strptime(commits$rawdate, "%a, %d %b %Y %H:%M:%S %z")
 # orig <- commits
 # for (i in 1:139) {
 #    t <- orig
-#    t$d <- t$d + rnorm(length(t$d), -500, 20000)
+#    t$d <- t$d + rnorm(length(t$d), -500, 50000)
 #    t$name <- paste(sample(LETTERS, 8), collapse="")
 #    commits <- rbind(commits, t)
 # }
 
 ggplot(data=commits, aes(x=d, y=name)) + 
-    geom_point(alpha=I(2/3), aes(size=log(insertions+deletions), 
+    geom_point(alpha=I(1/2), aes(size=log(insertions+deletions), 
                               colour=(insertions-deletions)/(insertions+deletions))) +
     scale_color_gradient2(limits=c(-1, 1), low="#DE2D26", high="#31A354", mid="#FEE6CE", midpoint=0) +
     guides(size=guide_legend("total lines changed"),
            colour=guide_colorbar("Relative Net Change"),
            direction="horizontal") +
-    ggtitle("Commits per student over time") +
+    ggtitle("COMS3157 Commits") +
     ylab("Each row is one student") +
     xlab("Date") +
     theme(legend.position="none", legend.direction="horizontal",
