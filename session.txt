@@ -1,0 +1,77 @@
+clm2186@minsk:~$ mkdir ~/tmp
+clm2186@minsk:~$ cd ~/tmp
+clm2186@minsk:~/tmp$ git clone https://gist.github.com/5537934.git
+Cloning into '5537934'...
+remote: Counting objects: 15, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 15 (delta 2), reused 11 (delta 1)
+Unpacking objects: 100% (15/15), done.
+clm2186@minsk:~/tmp$ cd 5537934
+clm2186@minsk:~/tmp/5537934$ ls
+graph.R  session.txt  summary.rb 
+clm2186@minsk:~/tmp/5537934$ gem install --user-install mbox
+Successfully installed mbox-0.0.4.6
+1 gem installed
+Installing ri documentation for mbox-0.0.4.6...
+Installing RDoc documentation for mbox-0.0.4.6...
+clm2186@minsk:~/tmp/5537934$ cd /home/w3157/submit
+clm2186@minsk:/home/w3157/submit$ ruby1.9.1 ~/tmp/5537934/summary.rb 
+working on: lab2/clm2186-lab2.mbox. Lab 2 of clm2186. mapped to KFDRINUV...
+working on: lab3/clm2186-lab3.mbox. Lab 3 of clm2186. mapped to KFDRINUV...
+##### SNIP ONE LINE PER MBOX
+
+
+### ./commits.csv has been created
+### Continue below to generate commits.pdf
+clm2186@minsk:/home/w3157/submit$ R
+
+R version 2.14.1 (2011-12-22)
+Copyright (C) 2011 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+            
+> source("~/tmp/5537934/graph.R")
+Loading required package: ggplot2
+Installing package(s) into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+Warning in install.packages("ggplot2") :
+  'lib = "/usr/local/lib/R/site-library"' is not writable
+Would you like to create a personal library
+~/R/x86_64-pc-linux-gnu-library/2.14
+to install packages into?  (y/n) y
+
+also installing the dependencies ‘colorspace’, ‘stringr’, ‘RColorBrewer’, ‘dichromat’, ‘munsell’, ‘labeling’, ‘plyr’, ‘digest’, ‘gtable’, ‘reshape2’, ‘scales’, ‘proto’
+
+trying URL 'http://cran.cnr.Berkeley.edu/src/contrib/colorspace_1.2-2.tar.gz'
+Content type 'application/x-gzip' length 242576 bytes (236 Kb)
+opened URL
+==================================================
+downloaded 236 Kb
+
+### SNIP 250 LINES
+
+* DONE (ggplot2)
+
+The downloaded packages are in
+    ‘/tmp/RtmpLiEMrp/downloaded_packages’
+Loading required package: ggplot2
+Find out what's changed in ggplot2 with
+news(Version == "0.9.3.1", package = "ggplot2")
+> quit()
+Save workspace image? [y/n/c]: n
+clm2186@minsk:/home/w3157/submit$ ls
+commits.csv   commits.pdf
