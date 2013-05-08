@@ -1,4 +1,7 @@
 if (!require("ggplot2")) {
+    r <- getOption("repos")
+    r["CRAN"] <- "http://cran.cnr.Berkeley.edu"
+    options(repos =r)
     install.packages("ggplot2")
     require("ggplot2")
 }
