@@ -24,10 +24,12 @@ in the relevant mboxes.
 3. In the `/home/w3157/submit` directory (or another identically laid out with `labn/uni.mbox`) run the ruby script with ruby1.9.1:   `ruby1.9.1 ~/tmp/5537934/summary.rb`
 4. The script will create commits.csv in the current directory.
 
-    name,lab,rawdate,datetime,files,insertions,deletions
-    RSXPFNYQ,2,"Thu, 21 Feb 2013 23:13:20 -0500",2013-02-21T23:13:20-05:00,1,65,0
-    RSXPFNYQ,3,"Mon, 25 Feb 2013 12:59:10 -0500",2013-02-25T12:59:10-05:00,2,23,10
-    RSXPFNYQ,3,"Mon, 4 Mar 2013 20:41:34 -0500",2013-03-04T20:41:34-05:00,3,64,41
+````
+name,lab,rawdate,datetime,files,insertions,deletions
+RSXPFNYQ,2,"Thu, 21 Feb 2013 23:13:20 -0500",2013-02-21T23:13:20-05:00,1,65,0
+RSXPFNYQ,3,"Mon, 25 Feb 2013 12:59:10 -0500",2013-02-25T12:59:10-05:00,2,23,10
+RSXPFNYQ,3,"Mon, 4 Mar 2013 20:41:34 -0500",2013-03-04T20:41:34-05:00,3,64,41
+````
 
 This CSV is potentially quite interesting, for example to see how close to the deadline students work, the impact of YAX, time of day/day of week, how much code change there is, etc. 
 
