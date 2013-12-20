@@ -17,8 +17,8 @@ commits$d <- strptime(commits$rawdate, "%a, %d %b %Y %H:%M:%S %z")
 #    commits <- rbind(commits, t)
 # }
 
-duedates <- data.frame(names=c("Lab 1", "Lab 2", "Lab 3", "Lab 4", "Lab 5", "Lab 6", "Lab 7", "Lab 9", "Lab 10"),
-                       dates=strptime(c("2013-02-10 11:59 pm -0400", "2013-02-24 11:59 pm -0400", "2013-03-04 11:59 pm -0400", "2013-03-16 11:59 pm -0500", "2013-03-26 12:00 pm -0500", "2013-04-11 11:59 pm -0500", "2013-04-24 11:59 pm -0500", "2013-04-29 11:59 pm -0500", "2013-05-08 12:00 pm -0500")
+duedates <- data.frame(names=c("Lab 1", "Lab 2", "Lab 3", "Lab 4", "Lab 5", "Lab 6", "Lab 7", "Lab 9", "Lab 10", "Hackathon"),
+                       dates=strptime(c("2013-09-27 11:59 pm -0500", "2013-10-06 11:59 pm -0500", "2013-10-12 11:59 pm -0500", "2013-10-27 11:59 pm -0500", "2013-11-03 12:00 pm -0500", "2013-11-10 11:59 pm -0500", "2013-11-24 11:59 pm -0500", "2013-12-3 11:59 pm -0400", "2013-12-10 12:00 pm -0500", "2013-10-25 9:00 pm -0400")
                                       , "%Y-%m-%d %I:%M %p %z"))
 
 ggplot(data=commits, aes(x=d, y=name)) + 
@@ -40,3 +40,4 @@ ggplot(data=commits, aes(x=d, y=name)) +
           panel.grid.major.y=element_blank(),
           panel.grid.minor.y=element_blank())
 ggsave("commits.pdf", width=11, height=8.5)
+ggsave("commits.png", width=11, height=8.5)
