@@ -75,3 +75,4 @@ news(Version == "0.9.3.1", package = "ggplot2")
 Save workspace image? [y/n/c]: n
 clm2186@minsk:/home/w3157/submit$ ls
 commits.csv   commits.pdf
+
