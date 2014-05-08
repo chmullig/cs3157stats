@@ -2,29 +2,21 @@ if (!require("ggplot2")) {
     r <- getOption("repos")
     r["CRAN"] <- "http://cran.cnr.Berkeley.edu"
     options(repos =r)
-    install.packages("ggplot2")
+    install.packages(c("ggplot2", "plyr"))
     require("ggplot2")
 }
+require("plyr")
+
 commits <- read.csv("commits.csv")
 commits$d <- strptime(commits$rawdate, "%a, %d %b %Y %H:%M:%S %z")
 
-# # For Debugging Purposes
-# orig <- commits
-# for (i in 1:139) {
-#    t <- orig
-#    t$d <- t$d + rnorm(length(t$d), -500, 50000)
-#    t$name <- paste(sample(LETTERS, 8), collapse="")
-#    commits <- rbind(commits, t)
-# }
-
-duedates <- data.frame(names=c("Lab 1", "Lab 2", "Lab 3", "Lab 4", "Lab 5", "Lab 6", "Lab 7", "Lab 9", "Lab 10", "Hackathon"),
-                       dates=strptime(c("2013-09-27 11:59 pm -0500", "2013-10-06 11:59 pm -0500", "2013-10-12 11:59 pm -0500", "2013-10-27 11:59 pm -0500", "2013-11-03 12:00 pm -0500", "2013-11-10 11:59 pm -0500", "2013-11-24 11:59 pm -0500", "2013-12-3 11:59 pm -0400", "2013-12-10 12:00 pm -0500", "2013-10-25 9:00 pm -0400")
-                                      , "%Y-%m-%d %I:%M %p %z"))
+events <- read.csv("events.csv")
+events$dates <- strptime(events$date, "%Y-%m-%d %H:%M")
 
 ggplot(data=commits, aes(x=d, y=name)) + 
     geom_point(alpha=I(1/2), aes(size=log(insertions+deletions), 
                               colour=(insertions-deletions)/(insertions+deletions))) +
-    geom_text(data=duedates,aes(x=dates,y=-1,label=names),inherit_aes=FALSE,
+    geom_text(data=events,aes(x=dates,y=-1,label=names),inherit_aes=FALSE,
               vjust=0,hjust=-0,size=3,angle=45, alpha=.9)+
     scale_color_gradient2(limits=c(-1, 1), low="#DE2D26", high="#31A354", mid="#FEE6CE", midpoint=0) +
     guides(size=guide_legend("total lines changed"),
@@ -39,5 +31,11 @@ ggplot(data=commits, aes(x=d, y=name)) +
           axis.line.y=element_blank(),
           panel.grid.major.y=element_blank(),
           panel.grid.minor.y=element_blank())
+
 ggsave("commits.pdf", width=11, height=8.5)
 ggsave("commits.png", width=11, height=8.5)
+
+print("=== Statistics ===")
+print(paste("Total Commits:", nrow(commits)))
+print("Commits Per Lab:")
+print(ddply(commits, 'lab', function(x) c(count=nrow(x))))
