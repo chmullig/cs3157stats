@@ -11,7 +11,7 @@ commits <- read.csv("commits.csv")
 commits$d <- strptime(commits$rawdate, "%a, %d %b %Y %H:%M:%S %z")
 
 events <- read.csv("events.csv")
-events$dates <- strptime(events$date, "%Y-%m-%d %H:%M")
+events$dates <- strptime(events$date, "%m/%d/%y %H:%M")
 
 ggplot(data=commits, aes(x=d, y=name)) + 
     geom_point(alpha=I(1/2), aes(size=log(insertions+deletions), 
